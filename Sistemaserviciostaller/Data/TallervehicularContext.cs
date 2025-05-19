@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+using Sistemaserviciostaller.Data;
 
 namespace Sistemaserviciostaller.Data;
 
 public partial class TallervehicularContext : DbContext
 {
+
     public TallervehicularContext()
     {
     }
@@ -90,7 +92,7 @@ public partial class TallervehicularContext : DbContext
             entity.ToTable("ordenservicio");
 
             entity.HasIndex(e => e.VehiculoId, "VehiculoId");
-
+                
             entity.Property(e => e.Estado).HasMaxLength(50);
 
             entity.HasOne(d => d.Vehiculo).WithMany(p => p.Ordenservicio)
@@ -129,4 +131,6 @@ public partial class TallervehicularContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+public DbSet<Sistemaserviciostaller.Data.Usuario> Usuario { get; set; } = default!;
 }

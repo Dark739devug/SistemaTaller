@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Geist Sans', sans-serif;
+  background-image: url('/tuercas.jpg'); 
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1); 
+  z-index: -1;
+}
+
+
+main {
+  flex-grow: 1;
+  padding-top: 60px; 
+  position: relative;
+  z-index: 1;
+}
+
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  padding: 20px;
+  color: white;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+
+.container {
+  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+  color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenedor de navbar */
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Enlaces de la navbar */
+.navbar-links {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-links a {
+  color: #ccc;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.navbar-links a:hover {
+  background-color: #4a4747;
+  color: white;
+}
+
+
+.navbar span {
+  font-size: 3rem !important;
+}
+
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  font-size: 15px;
+  padding: 15px 30px;
+}
+
+.auth-buttons .register-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.auth-buttons .register-btn:hover {
+  background-color: #3A97B2;
+}
+
+.auth-buttons .login-btn {
+  background-color: #352E6F;
+  color: white;
+}
+
+.auth-buttons .login-btn:hover {
+  background-color: #218838;
+}
+
+/* Footer al final */
+footer {
+  background-color: rgba(0, 0, 0, 0.85); /* Igual que navbar */
+  color: white; /* Igual que navbar */
+  padding: 10px 0; /* Igual que navbar */
+  position: relative; /* Puedes poner 'fixed' si quieres que siempre esté visible */
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Igual que navbar */
+  text-align: center;
+}
+
+.container-right {
+  margin-right: 40px;
+  margin-left: auto;
+}
