@@ -51,7 +51,7 @@ export default function LoginForm() {
         throw new Error(data.message || 'Error en el servidor');
       }
 
-      // Usar el método login del contexto
+      
       login(data.token, formData.Email);
       
       document.cookie = `token=${data.token}; path=/; max-age=86400`;

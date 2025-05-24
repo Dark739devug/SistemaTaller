@@ -8,6 +8,7 @@ import {
 } from '@/services/clientesService';
 import { Toaster, toast } from 'sonner';
 import Sidebar from '@/components/Sidebar';
+import styles from './Clientes.module.css';
 
 export default function ClientesPage() {
   const [clientes, setClientes] = useState([]);
@@ -103,13 +104,15 @@ export default function ClientesPage() {
           </h2>
           
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
               <input
                 type="text"
                 name="nombre"
                 value={formData.nombre}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-md"
+               className={`${styles.input}`}
+
                 placeholder="Nombre Completo"
                 required
               />
@@ -118,7 +121,7 @@ export default function ClientesPage() {
                 name="telefono"
                 value={formData.telefono}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className={`${styles.input}`}
                 placeholder="Teléfono"
                 required
               />
@@ -127,7 +130,7 @@ export default function ClientesPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className={`${styles.input}`}
                 placeholder="Correo Electrónico"
                 required
               />
@@ -154,7 +157,7 @@ export default function ClientesPage() {
           </form>
         </div>
 
-        {/* Tabla de Clientes */}
+       
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -172,7 +175,7 @@ export default function ClientesPage() {
                   <td className="px-6 py-4">{cliente.telefono}</td>
                   <td className="px-6 py-4">{cliente.email}</td>
                   <td className="px-6 py-4">
-                    <button onClick={() => handleEdit(cliente)} className="mr-2 bg-yellow-300 p-1 rounded">Editar</button>
+                    <button onClick={() => handleEdit(cliente)} className="editar">Editar</button>
                     <button onClick={() => handleDelete(cliente.id)} className="bg-red-300 p-1 rounded">Eliminar</button>
                   </td>
                 </tr>

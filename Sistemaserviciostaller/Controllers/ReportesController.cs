@@ -21,7 +21,7 @@ namespace Sistemaserviciostaller.Controllers
         {
     var resultados = _context.Ordenservicio
         .Where(o => o.Fecha.HasValue)
-        .GroupBy(o => o.Fecha!.Value.Month) // El "!" le dice al compilador: "esto no será null"
+        .GroupBy(o => o.Fecha!.Value.Month) 
         .Select(g => new
         {
             Mes = g.Key,

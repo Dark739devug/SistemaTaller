@@ -4,22 +4,36 @@ import React from "react";
 import { useRouter } from 'next/navigation';
 import styles from './Sidebar.module.css';
 
-import { FaHome, FaUsers, FaCar, FaUserCircle, FaCog } from "react-icons/fa";
-
+import {
+  FaHome,
+  FaUsers,
+  FaCar,
+  FaUserTie,
+  FaCog,
+  FaClipboardList,
+  FaChartBar,
+  FaFileAlt
+} from "react-icons/fa"; 
 const ICONS = {
-  "home": <FaHome />,
-  "clientes": <FaUsers />,
-  "vehiculos": <FaCar />,
-  "profile": <FaUserCircle />,
-  "settings": <FaCog />,
+  home: <FaHome />,
+  clientes: <FaUsers />,
+  vehiculos: <FaCar />,
+  empleados: <FaUserTie />,
+  ordenes: <FaClipboardList />,
+  reportes: <FaChartBar />,
+  detalleOrden: <FaFileAlt />,
+  
 };
 
 const routes = [
   { path: '/dashboard', icon: ICONS.home, title: 'Inicio' },
   { path: '/clientes', icon: ICONS.clientes, title: 'Clientes' },
   { path: '/vehiculos', icon: ICONS.vehiculos, title: 'Vehículos' },
-  { path: '/profile', icon: ICONS.profile, title: 'Perfil' },
-  { path: '/settings', icon: ICONS.settings, title: 'Configuración' },
+  { path: '/empleados', icon: ICONS.empleados, title: 'Empleados' },
+  { path: '/ordenes', icon: ICONS.ordenes, title: 'Órdenes' },
+  { path: '/reportes', icon: ICONS.reportes, title: 'Reportes' },
+  { path: '/detalle-orden', icon: ICONS.detalleOrden, title: 'Detalle Orden' },
+  
 ];
 
 const Sidebar = () => {
@@ -46,3 +60,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

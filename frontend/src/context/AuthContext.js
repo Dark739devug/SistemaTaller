@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
   const [userEmail, setUserEmail] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Función login memorizada
+
   const login = useCallback((token, email) => {
     localStorage.setItem('token', token);
     localStorage.setItem('userEmail', email);
@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
     setUserEmail(email);
   }, []);
 
-  // Función logout memorizada
+ 
   const logout = useCallback(() => {
     localStorage.removeItem('token');
     localStorage.removeItem('userEmail');

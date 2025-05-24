@@ -1,8 +1,8 @@
 
 const Footer = () => {
   return (
-    <footer style={{ background: '#333', color: '#fff', padding: '1rem' }}>
-    <p>© 2025 Mecanica y mas . Todos los derechos reservados.</p>
+    <footer >
+    <p style={{ color: 'white' }}>© 2025 Mecanica y más. Todos los derechos reservados.</p>
 
     
     </footer>

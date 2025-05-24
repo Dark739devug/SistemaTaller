@@ -12,7 +12,7 @@
 
 body {
   font-family: 'Geist Sans', sans-serif;
-  background-image: url('/tuercas.jpg'); 
+  background-image: url('/mecanico.png'); 
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -55,7 +55,7 @@ main {
 
 
 .container {
-  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+  background: rgba(0, 0, 0, 0.8); 
   color: white;
   padding: 30px;
   border-radius: 8px;
@@ -156,8 +156,8 @@ button {
 
 /* Footer al final */
 footer {
-  background-color: rgba(0, 0, 0, 0.85); /* Igual que navbar */
-  color: white; /* Igual que navbar */
+  background: rgba(0, 0, 0, 0.8);
+  color: rgb(17, 16, 16); 
   padding: 10px 0; /* Igual que navbar */
   position: relative; /* Puedes poner 'fixed' si quieres que siempre esté visible */
   width: 100%;
