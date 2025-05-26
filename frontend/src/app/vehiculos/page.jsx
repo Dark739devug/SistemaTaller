@@ -4,6 +4,7 @@ import { Toaster, toast } from 'sonner';
 import Sidebar from '@/components/Sidebar';
 
 const API_URL = 'http://localhost:5196/api/Vehiculoes';
+const [busqueda, setBusqueda] = useState('');
 
 export default function VehiculosPage() {
   const [vehiculos, setVehiculos] = useState([]);
@@ -11,7 +12,7 @@ export default function VehiculosPage() {
     clienteId: '',
     marca: '',
     modelo: '',
-    año: '',
+    año: '',  
     placa: ''
   });
   const [editingId, setEditingId] = useState(null);
@@ -168,9 +169,17 @@ export default function VehiculosPage() {
 
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-4 border-b border-gray-200">
+            <input
+              type="text"
+              placeholder="Buscar por placa o NIT del cliente"
+              className="p-2 border border-gray-300 rounded-md w-full"
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value)}
+            />
+          </div>
+          <div className="p-4 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-gray-700">Listado de Vehículos</h2>
           </div>
-          
           {isLoading ? (
             <div className="p-8 text-center">Cargando vehículos...</div>
           ) : error ? (
@@ -180,6 +189,8 @@ export default function VehiculosPage() {
               <thead className="bg-gray-50">
                 <tr>
                   <th>Cliente ID</th>
+                  <th>Nombre del Cliente</th>
+                  <th>NIT del Cliente</th>
                   <th>Marca</th>
                   <th>Modelo</th>
                   <th>Año</th>
@@ -188,19 +199,26 @@ export default function VehiculosPage() {
                 </tr>
               </thead>
               <tbody>
-                {vehiculos.map((vehiculo) => (
-                  <tr key={vehiculo.id}>
-                    <td>{vehiculo.clienteId}</td>
-                    <td>{vehiculo.marca}</td>
-                    <td>{vehiculo.modelo}</td>
-                    <td>{vehiculo.año}</td>
-                    <td>{vehiculo.placa}</td>
-                    <td>
-                      <button onClick={() => handleEdit(vehiculo)}>Editar</button>
-                      <button onClick={() => handleDelete(vehiculo.id)}>Eliminar</button>
-                    </td>
-                  </tr>
-                ))}
+                {vehiculos
+                  .filter((vehiculo) =>
+                    (vehiculo.placa?.toLowerCase() || '').includes(busqueda.toLowerCase()) ||
+                    (vehiculo.cliente?.nit?.toLowerCase() || '').includes(busqueda.toLowerCase())
+                  )
+                  .map((vehiculo) => (
+                    <tr key={vehiculo.id}>
+                      <td>{vehiculo.cliente?.id}</td>
+                      <td>{vehiculo.cliente?.nombre || 'Sin nombre'}</td>
+                      <td>{vehiculo.cliente?.nit || 'Sin NIT'}</td>
+                      <td>{vehiculo.marca}</td>
+                      <td>{vehiculo.modelo}</td>
+                      <td>{vehiculo.año}</td>
+                      <td>{vehiculo.placa}</td>
+                      <td>
+                        <button onClick={() => handleEdit(vehiculo)}>Editar</button>
+                        <button onClick={() => handleDelete(vehiculo.id)}>Eliminar</button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           )}

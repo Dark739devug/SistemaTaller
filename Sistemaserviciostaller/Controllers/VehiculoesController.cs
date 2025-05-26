@@ -24,7 +24,12 @@ namespace Sistemaserviciostaller.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vehiculo>>> GetVehiculo()
         {
-            return await _context.Vehiculo.ToListAsync();
+            return await _context.Vehiculo
+             .Include(v => v.Cliente) // Esto carga los datos del cliente
+                .Include(v => v.Marca) // Esto carga los datos de la marca
+                .Include(v => v.Modelo) // Esto carga los datos del modelo
+                
+            .ToListAsync();
         }
 
         // GET: api/Vehiculoes/5
@@ -97,6 +102,36 @@ namespace Sistemaserviciostaller.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        // Buscar por placa
+        [HttpGet("buscar/placa/{placa}")]
+        public async Task<IActionResult> BuscarPorPlaca(string placa)
+        {
+            var vehiculos = await _context.Vehiculo
+                .Include(v => v.Cliente)
+                .Where(v => v.Placa != null && v.Placa.ToLower().Contains(placa.ToLower()))
+                .ToListAsync();
+
+            if (vehiculos == null || vehiculos.Count == 0)
+                return NotFound();
+
+            return Ok(vehiculos);
+        }
+
+        // Buscar por cliente
+        [HttpGet("buscar/cliente/{cliente}")]
+        public async Task<IActionResult> BuscarPorCliente(string cliente)
+        {
+            var vehiculos = await _context.Vehiculo
+                .Include(v => v.Cliente)
+                .Where(v => v.Cliente != null && v.Cliente.Nombre != null && v.Cliente.Nombre.ToLower().Contains(cliente.ToLower()))
+                .ToListAsync();
+
+            if (vehiculos == null || vehiculos.Count == 0)
+                return NotFound();
+
+            return Ok(vehiculos);
         }
 
         private bool VehiculoExists(int id)

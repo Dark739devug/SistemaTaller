@@ -19,5 +19,9 @@ public partial class Vehiculo
 
     public virtual Cliente? Cliente { get; set; }
 
+    public int? EmpleadoId { get; set; } // Nuevo campo
+
+   public virtual Empleado? Empleado { get; set; } // Relación
+    
     public virtual ICollection<Ordenservicio> Ordenservicio { get; set; } = new List<Ordenservicio>();
 }

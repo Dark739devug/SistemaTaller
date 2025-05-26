@@ -12,6 +12,8 @@ public partial class Cliente
     public string? Telefono { get; set; }
 
     public string? Email { get; set; }
+  
+      public string? NIT { get; set; }
 
     public virtual ICollection<Vehiculo> Vehiculo { get; set; } = new List<Vehiculo>();
 }
